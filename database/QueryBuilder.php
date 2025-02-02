@@ -34,8 +34,31 @@ class QueryBuilder {
         );
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function update($table, $data){
-//        $sql = "UPDATE {$table} SET title = :title WHERE id = :id";
+    public function update($table, $data, $id)
+    {
+        $keys = array_keys($data);
 
+        $string = '';
+
+        foreach ($keys as $key) {
+            $string .= "{$key} = :{$key},";
+        }
+
+        $keys = rtrim($string, ',');
+
+        $data['id'] = $id;
+
+        $sql = "UPDATE {$table} SET {$keys} WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($data);
+    }
+    public function delete($table, $id){
+        $sql = "DELETE FROM {$table} WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(
+            [
+                ":id" => $id
+            ]
+        );
     }
 }
