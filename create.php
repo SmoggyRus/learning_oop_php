@@ -13,12 +13,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <form action="store.php" method="post">
+            <form action="store.php" method="POST">
                 <div class="form-group">
                     <label for="">Title</label>
                     <input type="text" name="title" class="form-control">
                 </div>
-
                 <div class="form-group">
                     <button class="btn btn-success">Add Post</button>
                 </div>
