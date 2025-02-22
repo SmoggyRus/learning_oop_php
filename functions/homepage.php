@@ -1,8 +1,6 @@
 <?php
-
-echo "this is homepage";
-$db = include 'database/start.php';
+$db = include __DIR__ . '/../database/start.php';
 
 $posts = $db->getAll('posts');
 
-include 'index.view.php';
+include __DIR__ . '/../index.view.php';

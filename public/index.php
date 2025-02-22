@@ -14,7 +14,7 @@ $route = $_SERVER['REQUEST_URI'];
 
 if(array_key_exists($route, $routes))
 {
-    include $routes[$route];exit;
+    include __DIR__ . '/../' .  $routes[$route];exit;
 }else{
     echo "404 Not Found | Страница не найдена";
 }
